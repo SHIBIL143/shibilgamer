@@ -298,6 +298,17 @@ p {
 	z-index: 1;
 	overflow: hidden;
 }
+#services .service-item1::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+	opacity: 0.9;
+	z-index: -1;
+}
 #services .service-item2 {
 	flex-basis: 80%;
 	display: flex;
@@ -312,6 +323,17 @@ p {
 	position: relative;
 	z-index: 1;
 	overflow: hidden;
+}
+#services .service-item2::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+	opacity: 0.9;
+	z-index: -1;
 }
 #services .service-item3 {
 	flex-basis: 80%;
@@ -328,7 +350,7 @@ p {
 	z-index: 1;
 	overflow: hidden;
 }
-#services .service-item::after {
+#services .service-item3::after {
 	content: '';
 	position: absolute;
 	left: 0;

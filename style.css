@@ -283,7 +283,7 @@ p {
 	flex-wrap: wrap;
 	margin-top: 50px;
 }
-#services .service-item {
+#services .service-item1 {
 	flex-basis: 80%;
 	display: flex;
 	align-items: flex-start;
@@ -291,7 +291,37 @@ p {
 	flex-direction: column;
 	padding: 30px;
 	border-radius: 10px;
-	background-image: url(./img/img-1.png);
+	background-image: url(./img/bg-1.png);
+	background-size: cover;
+	margin: 10px 5%;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+}
+#services .service-item2 {
+	flex-basis: 80%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	flex-direction: column;
+	padding: 30px;
+	border-radius: 10px;
+	background-image: url(./img/bg-2.png);
+	background-size: cover;
+	margin: 10px 5%;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+}
+#services .service-item3 {
+	flex-basis: 80%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	flex-direction: column;
+	padding: 30px;
+	border-radius: 10px;
+	background-image: url(./img/bg-3.png);
 	background-size: cover;
 	margin: 10px 5%;
 	position: relative;

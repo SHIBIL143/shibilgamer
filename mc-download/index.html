@@ -36,7 +36,8 @@
     </div>
   </section>
   <!-- End Header -->
-
+  
+  <!-- FreeFire -->
   <main>
     <section class="app-details">
       <img src="freefire-logo.png" alt="Free Fire Logo" class="logo">
@@ -52,11 +53,7 @@
       </div>
     </section>
   </main>
-  <footer>
-    <p>&copy; 2024 Your SHIBILGAMER. All rights reserved.</p>
-  </footer>
-
-  <script>
+    <script>
     function startDownload() {
       // Simulate download completion
       setTimeout(function() {
@@ -72,7 +69,45 @@
         hamburger.classList.toggle('active');
         navList.classList.toggle('active');
       });
+       });
+  </script>
+  <!--FreeFire-->
+  <!-- Minecract -->
+  <main>
+    <section class="app-details">
+      <img src="minecraft-logo.png" alt="Minecraft Logo" class="logo">
+      <h2>Get the Latest Version of Minecract</h2>
+      <button class="button" onclick="startDownload()">
+        <span class="one">Download 0%</span>
+        <span class="two">100%</span>
+      </button>
+      <h3>INSTRUCTIONS</h3>
+      <div class="instructions-box">
+        <p>• Download Minecraft App<br>• Then Install Minecraft.apk<br>• Enjoy😊</p>
+      </div>
+    </section>
+  </main>
+  <script>
+    function startDownload() {
+      // Simulate download completion
+      setTimeout(function() {
+        window.location.href = "https://dl.mcpelife.com/minecraft-pe/1-21-2-02/minecraft-1-21-2-02-xbox-servers.apk";
+      }, 3000); // Change to the appropriate time for your download simulation
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const hamburger = document.querySelector('.hamburger');
+      const navList = document.querySelector('.nav-list ul');
+
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navList.classList.toggle('active');
+      });
     });
   </script>
+  <!--Minecraft-->
+  <footer>
+    <p>&copy; 2024 Your SHIBILGAMER. All rights reserved.</p>
+  </footer>
 </body>
 </html>

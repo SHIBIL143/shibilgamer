@@ -31,123 +31,71 @@ main {
 }
 
 .app-details .logo {
-    max-width: 100px; /* Adjust this value to decrease the size of the logo */
+    max-width: 100px;
     margin-bottom: 1rem;
 }
 
-.download-btn {
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
+/* New button styles */
+.botao {
+    width: 125px;
+    height: 45px;
+    border-radius: 20px;
     border: none;
-    background: none;
-    color: #0f1923;
+    box-shadow: 1px 1px rgba(107, 221, 215, 0.37);
+    padding: 5px 10px;
+    background: rgb(47,93,197);
+    background: linear-gradient(160deg, rgba(47,93,197,1) 0%, rgba(46,86,194,1) 5%, rgba(47,93,197,1) 11%, rgba(59,190,230,1) 57%, rgba(0,212,255,1) 71%);
+    color: #fff;
+    font-family: Roboto, sans-serif;
+    font-weight: 505;
+    font-size: 16px;
+    line-height: 1;
     cursor: pointer;
-    position: relative;
-    padding: 10px 20px;
-    margin-top: 1rem;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 14px;
-    transition: all .15s ease;
-    background-color: #f44336;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    overflow: hidden;
-    box-shadow: inset 0px 0px 0px 1px transparent;
-}
-
-.download-btn::before,
-.download-btn::after {
-    content: '';
-    display: block;
-    position: absolute;
-    right: 0;
-    left: 0;
-    height: calc(50% - 5px);
-    border: 1px solid #7D8082;
-    transition: all .15s ease;
-}
-
-.download-btn::before {
-    top: 0;
-    border-bottom-width: 0;
-}
-
-.download-btn::after {
-    bottom: 0;
-    border-top-width: 0;
-}
-
-.download-btn:active,
-.download-btn:focus {
-    outline: none;
-}
-
-.download-btn:active::before,
-.download-btn:active::after {
-    right: 3px;
-    left: 3px;
-}
-
-.download-btn:active::before {
-    top: 3px;
-}
-
-.download-btn:active::after {
-    bottom: 3px;
-}
-
-.download-btn .button_lg::before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 2px;
-    height: 2px;
-    background-color: #0f1923;
-}
-
-.download-btn .button_lg::after {
-    content: '';
-    display: block;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 4px;
-    height: 4px;
-    background-color: #0f1923;
-    transition: all .2s ease;
-}
-
-.download-btn .button_sl {
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: -1px;
-    left: -8px;
-    width: 0;
-    background-color: #ff4655;
-    transform: skew(-15deg);
-    transition: all .2s ease;
-}
-
-.download-btn .button_text {
+    filter: drop-shadow(0 0 10px rgba(59, 190, 230, 0.568));
+    transition: .5s linear;
     position: relative;
 }
 
-.download-btn:hover {
-    color: #0f1923;
+.botao .mysvg {
+    display: none;
 }
 
-.download-btn:hover .button_sl {
-    width: calc(100% + 15px);
+.botao:hover {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: .5s linear;
 }
 
-.download-btn:hover .button_lg::after {
-    background-color: #fff;
+.botao:hover .texto {
+    display: none;
+}
+
+.botao:hover .mysvg {
+    display: inline;
+}
+
+.botao:hover::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: 100%;
+    height: 100%;
+    border: 3.5px solid transparent;
+    border-top: 3.5px solid #fff;
+    border-right: 3.5px solid #fff;
+    border-radius: 50%;
+    animation: animateC 2s linear infinite;
+}
+
+@keyframes animateC {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 footer {

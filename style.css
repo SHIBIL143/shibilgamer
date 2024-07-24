@@ -753,3 +753,116 @@ p {
 	}
 }
 /* End  Media Query For Desktop */
+
+
+/* FF DOWNLOAD START*/
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e3f2fd;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #f44336;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-details {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.app-details .logo {
+    max-width: 100px;
+    margin-bottom: 1rem;
+}
+
+/* Button styles */
+.button {
+  width: 140px;
+  height: 45px;
+  border-radius: 30em;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  font-family: Roboto, sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 1;
+  background: #ff135a;
+  border: 3px solid #fff;
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+  transition: 0.6s ease-in;
+}
+
+.button:hover {
+  background: #fff;
+}
+
+.button .two {
+  display: none;
+}
+
+.button::before {
+  content: "";
+  width: 0;
+  height: 50px;
+  border-radius: 30em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(to right, #0fd850 0%, #f9f047 100%);
+  transition: 0.5s ease;
+  display: block;
+  z-index: -1;
+}
+
+.button:hover::before {
+  width: 140px;
+  transition: 3s linear;
+}
+
+.button:hover .one {
+  display: none;
+}
+
+.button:hover .two {
+  display: inline;
+}
+
+.instructions-box {
+    background-color: white;
+    padding: 1rem;
+    border: 2px solid #f44336;
+    border-radius: 8px;
+    margin-top: 1rem;
+    text-align: left; /* Align text to the left */
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 0.5rem 0;
+}
+
+/* FF DOWNLOAD STOP*/

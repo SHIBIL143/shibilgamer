@@ -21,7 +21,12 @@ main {
     justify-content: center;
     align-items: center;
 }
-
+instro {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .app-details {
     background: white;
     padding: 2rem;

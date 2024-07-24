@@ -31,7 +31,7 @@ main {
 }
 
 .app-details .logo {
-    max-width: 50px;
+    max-width: 100px; /* Adjust this value to decrease the size of the logo */
     margin-bottom: 1rem;
 }
 

@@ -39,14 +39,13 @@
   <br><br><br><br><br><br>
   <!-- FreeFire -->
   <main>
-    <section class="app-details">
+    <section class="app-details freefire">
       <img src="freefire-logo.png" alt="Free Fire Logo" class="logo">
       <h2>Normal Latest Version Of Free Fire</h2>
       <p>Download the latest version of Free Fire</p>
-      <button class="button" onclick="startDownload()">
+      <button class="button" onclick="startDownloadFreeFire()">
         <span class="one">Download</span>
         <span class="two">100%</span>
-        <br>
       </button>
       <br><br>
       <h3>INSTRUCTIONS</h3>
@@ -55,34 +54,15 @@
       </div>
     </section>
   </main>
-    <script>
-    function startDownload() {
-      // Simulate download completion
-      setTimeout(function() {
-        window.location.href = "https://wira.adem.my.id/?source=youtube&title=ZvnVHZ2CGE&type=zip&download=aHR0cHM6Ly9kb3dubG9hZDg0Ny5tZWRpYWZpcmUuY29tL2VqZmswdzFrbGJlZ3pDWDBzRjVyR29OcVduOHNPSE1hSlhtR3JnTVhfYWVmS3QyMFJrd1hCWno5NTBkWFFSX3QyVDBiY0RGejZiRVpCUWhiM21iMnJSVGNPR3FZeFFQY2VfQlV3cWdKdUJrcUFLbmduMDFpa1VwajdHMHhOMWhJNlRWbS1yVlEwRVFTSUwtWUQ2RmFQQXBOZkRjdFhOMlpVbHlwOHl5ZXlMT2RHQS9tMWpsMnVrbjE2ejk5aGkvRkYrQnkrU0hJQklMR0FNRVIuemlw";
-      }, 3000); // Change to the appropriate time for your download simulation
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-      const hamburger = document.querySelector('.hamburger');
-      const navList = document.querySelector('.nav-list ul');
-
-      hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navList.classList.toggle('active');
-      });
-       });
-  </script>
-  <!--FreeFire-->
   <br><br>
   <!-- Minecract -->
   <main>
-    <section class="app-details">
+    <section class="app-details minecraft">
       <img src="minecraft-logo.png" alt="Minecraft Logo" class="logo">
       <h2>Latest Version of Minecract</h2>
       <p>Download the latest version of Minecraft</p>
-      <button class="button" onclick="startDownload()">
-        <span class="one">Download 0%</span>
+      <button class="button" onclick="startDownloadMinecraft()">
+        <span class="one">Download</span>
         <span class="two">100%</span>
       </button>
       <br><br>
@@ -92,10 +72,19 @@
       </div>
     </section>
   </main>
+  <!-- End Footer -->
+  <script src="./app.js"></script>
   <script>
-    function startDownload() {
+    function startDownloadFreeFire() {
       // Simulate download completion
-      setTimeout(function() {
+      setTimeout(function () {
+        window.location.href = "https://wira.adem.my.id/?source=youtube&title=ZvnVHZ2CGE&type=zip&download=aHR0cHM6Ly9kb3dubG9hZDg0Ny5tZWRpYWZpcmUuY29tL2VqZmswdzFrbGJlZ3pDWDBzRjVyR29OcVduOHNPSE1hSlhtR3JnTVhfYWVmS3QyMFJrd1hCWno5NTBkWFFSX3QyVDBiY0RGejZiRVpCUWhiM21iMnJSVGNPR3FZeFFQY2VfQlV3cWdKdUJrcUFLbmduMDFpa1VwajdHMHhOMWhJNlRWbS1yVlEwRVFTSUwtWUQ2RmFQQXBOZkRjdFhOMlpVbHlwOHl5ZXlMT2RHQS9tMWpsMnVrbjE2ejk5aGkvRkYrQnkrU0hJQklMR0FNRVIuemlw";
+      }, 3000); // Change to the appropriate time for your download simulation
+    }
+
+    function startDownloadMinecraft() {
+      // Simulate download completion
+      setTimeout(function () {
         window.location.href = "https://dl.mcpelife.com/minecraft-pe/1-21-2-02/minecraft-1-21-2-02-xbox-servers.apk";
       }, 3000); // Change to the appropriate time for your download simulation
     }
@@ -110,8 +99,6 @@
       });
     });
   </script>
-  <!--Minecraft-->
-  <!-- End Footer -->
-  <script src="./app.js"></script>
 </body>
+
 </html>

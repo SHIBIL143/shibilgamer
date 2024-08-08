@@ -1,5 +1,5 @@
 <?php
-$telegramToken = '7282716690:AAEE8pt3tiE2gmtMWzDSxLR5S7S1c2TJMAM';
+$telegramToken = '7242978741:AAESuACxrwKFDZiAB5kFm0tNt5U4aIO-slM';
 $apiURL = "https://api.telegram.org/bot$telegramToken/";
 $databaseFile = 'database.txt';
 
@@ -79,7 +79,7 @@ function handleTextMessage($message) {
         // Finish the upload session
         $linkId = finishUploadSession($chatId);
         if ($linkId) {
-            $shareableLink = "https://t.me/YOURBOTUSERNAME?start=$linkId";
+            $shareableLink = "https://t.me/@DemoSG2bot?start=$linkId";
             file_get_contents($apiURL . "sendMessage?chat_id=$chatId&text=Shareable link: $shareableLink");
         }
     }

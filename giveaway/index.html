@@ -5,25 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giveaway Participation</title>
     <link rel="stylesheet" href="styles.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8032158247266302"
-     crossorigin="anonymous"></script>
 </head>
 <body>
-    <!--ad 1-->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8032158247266302"
-     crossorigin="anonymous"></script>
-<!-- n1 -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-8032158247266302"
-     data-ad-slot="9010025399"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-    <!--ad 1-->
-    
     <div class="container">
         <h1>Giveaway Participation</h1>
         <form id="giveawayForm">
@@ -35,27 +18,32 @@
                 <label for="telegramUsername">Telegram Username:</label>
                 <input type="text" id="telegramUsername" name="telegramUsername" required>
             </div>
-            <button type="submit">Enter Giveaway</button>
+            <button type="button" id="watchAdButton">Watch Ad to Enter Giveaway</button>
         </form>
     </div>
 
+    <!-- Reward Ad Modal -->
+    <div id="rewardAdModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Watch this Ad to Enter the Giveaway!</h2>
+            <!-- Google AdSense Ad Code -->
+            <div class="ad-placeholder">
+                <!-- Paste your Google AdSense code here -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-8032158247266302"   <!-- Replace with your actual ad client ID -->
+                     data-ad-slot="7395623023"           <!-- Replace with your actual ad slot ID -->
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                <button id="adCompleteButton">I've Watched the Ad</button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
-
-    <!--ad 2-->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8032158247266302"
-     crossorigin="anonymous"></script>
-<!-- n2 ad -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-8032158247266302"
-     data-ad-slot="8951149799"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-    <!--ad2-->
-
-    
 </body>
 </html>

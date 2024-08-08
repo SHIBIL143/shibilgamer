@@ -1,172 +1,69 @@
 <?php
-$telegramToken = '7242978741:AAESuACxrwKFDZiAB5kFm0tNt5U4aIO-slM';
-$apiURL = "https://api.telegram.org/bot$telegramToken/";
-$databaseFile = 'database.txt';
 
+$botToken = "7242978741:AAESuACxrwKFDZiAB5kFm0tNt5U4aIO-slM"; // Replace with your bot token
+$apiUrl = "https://api.telegram.org/bot$botToken/";
 
-$input = file_get_contents('php://input');
-$update = json_decode($input, TRUE);
+$update = file_get_contents("php://input");
+$update = json_decode($update, TRUE);
 
-if (isset($update['message']['document'])) {
-    handleFileUpload($update['message'], 'document');
-} elseif (isset($update['message']['photo'])) {
-    handleFileUpload($update['message'], 'photo');
-} elseif (isset($update['message']['video'])) {
-    handleFileUpload($update['message'], 'video');
-} elseif (isset($update['message']['audio'])) {
-    handleFileUpload($update['message'], 'audio');
-} elseif (isset($update['message']['sticker'])) {
-    handleFileUpload($update['message'], 'sticker');
-} elseif (isset($update['message']['text'])) {
-    handleTextMessage($update['message']);
-}
+$chatId = $update["message"]["chat"]["id"];
+$text = $update["message"]["text"];
+$fileId = isset($update["message"]["document"]["file_id"]) ? $update["message"]["document"]["file_id"] : null;
 
-function handleFileUpload($message, $type) {
-    global $apiURL;
-
-    $chatId = $message['chat']['id'];
-    $fileId = '';
-    $fileName = '';
-
-    switch ($type) {
-        case 'document':
-            $fileId = $message['document']['file_id'];
-            $fileName = $message['document']['file_name'];
-            break;
-        case 'photo':
-            $fileId = end($message['photo'])['file_id']; // Get the highest resolution photo
-            $fileName = "photo_" . uniqid() . ".jpg";
-            break;
-        case 'video':
-            $fileId = $message['video']['file_id'];
-            $fileName = $message['video']['file_name'];
-            break;
-        case 'audio':
-            $fileId = $message['audio']['file_id'];
-            $fileName = $message['audio']['file_name'];
-            break;
-        case 'sticker':
-            $fileId = $message['sticker']['file_id'];
-            $fileName = "sticker_" . uniqid() . ".webp";
-            break;
-    }
-
-    $caption = isset($message['caption']) ? $message['caption'] : '';
-
-    // Check if there is an existing link ID in the user's message history or create a new one
-    $linkId = getOrCreateLinkId($chatId);
-
-    // Save file info to the database
-    saveFileInfo($fileId, $fileName, $type, $caption, $linkId);
-
-    // Send confirmation message to the user
-    file_get_contents($apiURL . "sendMessage?chat_id=$chatId&text=File uploaded. Send /finish after sending all files.");
-}
-
-function handleTextMessage($message) {
-    global $apiURL;
-
-    $chatId = $message['chat']['id'];
-    $text = $message['text'];
-
-    if ($text == '/start') {
-        file_get_contents($apiURL . "sendMessage?chat_id=$chatId&text=Send me any content to share!");
-    } elseif (strpos($text, '/start') === 0) {
-        // Extract link ID from the start command
-        $linkId = substr($text, 7);
-        sendFilesFromLink($chatId, $linkId);
-    } elseif ($text == '/finish') {
-        // Finish the upload session
-        $linkId = finishUploadSession($chatId);
-        if ($linkId) {
-            $shareableLink = "https://t.me/@DemoSG2bot?start=$linkId";
-            file_get_contents($apiURL . "sendMessage?chat_id=$chatId&text=Shareable link: $shareableLink");
-        }
+if (isset($text)) {
+    if (strtolower($text) == "/start") {
+        sendMessage($chatId, "Send me a file and I'll convert it for you!");
+    } else {
+        sendMessage($chatId, "Please send a file to convert.");
     }
 }
 
-function getOrCreateLinkId($chatId) {
-    global $databaseFile;
+if ($fileId) {
+    $fileUrl = getFileUrl($fileId);
+    $fileContent = file_get_contents($fileUrl);
+    
+    // Convert the file (this is just an example, replace with your own conversion logic)
+    $convertedFile = convertFile($fileContent);
 
-    $database = json_decode(file_get_contents($databaseFile), true);
+    // Send converted file back to user
+    sendDocument($chatId, $convertedFile);
+}
 
-    // Check if there is an active link ID for the chat
-    foreach ($database as $entry) {
-        if ($entry['chat_id'] == $chatId && $entry['active']) {
-            return $entry['link_id'];
-        }
-    }
+function sendMessage($chatId, $text) {
+    global $apiUrl;
+    $url = $apiUrl . "sendMessage?chat_id=$chatId&text=" . urlencode($text);
+    file_get_contents($url);
+}
 
-    // Create a new link ID if none exists
-    $linkId = uniqid();
-    $database[] = [
-        'link_id' => $linkId,
+function sendDocument($chatId, $fileContent) {
+    global $apiUrl;
+    $url = $apiUrl . "sendDocument";
+    $postFields = [
         'chat_id' => $chatId,
-        'active' => true,
-        'files' => []
+        'document' => new CURLFile($fileContent)
     ];
-    file_put_contents($databaseFile, json_encode($database));
-
-    return $linkId;
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $postFields);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = curl_exec($ch);
+    curl_close($ch);
 }
 
-function saveFileInfo($fileId, $fileName, $type, $caption, $linkId) {
-    global $databaseFile;
-
-    $database = json_decode(file_get_contents($databaseFile), true);
-
-    foreach ($database as &$entry) {
-        if ($entry['link_id'] == $linkId) {
-            $entry['files'][] = [
-                'file_id' => $fileId,
-                'file_name' => $fileName,
-                'type' => $type,
-                'caption' => $caption
-            ];
-            break;
-        }
-    }
-
-    file_put_contents($databaseFile, json_encode($database));
+function getFileUrl($fileId) {
+    global $apiUrl;
+    $url = $apiUrl . "getFile?file_id=$fileId";
+    $response = file_get_contents($url);
+    $response = json_decode($response, TRUE);
+    return "https://api.telegram.org/file/bot" . $GLOBALS['botToken'] . "/" . $response["result"]["file_path"];
 }
 
-function finishUploadSession($chatId) {
-    global $databaseFile;
-
-    $database = json_decode(file_get_contents($databaseFile), true);
-
-    foreach ($database as &$entry) {
-        if ($entry['chat_id'] == $chatId && $entry['active']) {
-            $entry['active'] = false;
-            file_put_contents($databaseFile, json_encode($database));
-            return $entry['link_id'];
-        }
-    }
-
-    return false;
+function convertFile($fileContent) {
+    // Example conversion: just save the file with a new name
+    $convertedFile = 'converted_file.ext'; // Replace with your logic
+    file_put_contents($convertedFile, $fileContent);
+    return $convertedFile;
 }
 
-function sendFilesFromLink($chatId, $linkId) {
-    global $databaseFile, $apiURL;
-
-    $database = json_decode(file_get_contents($databaseFile), true);
-
-    foreach ($database as $entry) {
-        if ($entry['link_id'] == $linkId) {
-            foreach ($entry['files'] as $file) {
-                $params = [
-                    'chat_id' => $chatId,
-                    $file['type'] => $file['file_id']
-                ];
-                if (!empty($file['caption'])) {
-                    $params['caption'] = $file['caption'];
-                }
-
-                $url = $apiURL . "send" . ucfirst($file['type']);
-                file_get_contents($url . '?' . http_build_query($params));
-            }
-            break;
-        }
-    }
-}
 ?>

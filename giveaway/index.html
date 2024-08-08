@@ -7,41 +7,50 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Giveaway Participation</h1>
-        <form id="giveawayForm">
-            <div class="input-group">
-                <label for="fullName">Full Name:</label>
-                <input type="text" id="fullName" name="fullName" required>
-            </div>
-            <div class="input-group">
-                <label for="telegramUsername">Telegram Username:</label>
-                <input type="text" id="telegramUsername" name="telegramUsername" required>
-            </div>
-            <button type="button" id="watchAdButton">Watch Ad to Enter Giveaway</button>
+    <!-- Top Ad Section -->
+    <div class="ad-section top-ad">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8032158247266302"
+     crossorigin="anonymous"></script>
+<!-- Giveaway ad top -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8032158247266302"
+     data-ad-slot="4704681394"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+
+    <!-- Giveaway Form Section -->
+    <div class="form-container">
+        <h1>Enter the Giveaway</h1>
+        <form id="giveaway-form">
+            <label for="fullname">Full Name:</label>
+            <input type="text" id="fullname" name="fullname" required>
+
+            <label for="telegram-username">Telegram Username:</label>
+            <input type="text" id="telegram-username" name="telegram-username" required>
+
+            <button type="submit">Submit</button>
         </form>
     </div>
 
-    <!-- Reward Ad Modal -->
-    <div id="rewardAdModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Watch this Ad to Enter the Giveaway!</h2>
-            <!-- Google AdSense Ad Code -->
-            <div class="ad-placeholder">
-                <!-- Paste your Google AdSense code here -->
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-8032158247266302"   <!-- Replace with your actual ad client ID -->
-                     data-ad-slot="7395623023"           <!-- Replace with your actual ad slot ID -->
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-                <button id="adCompleteButton">I've Watched the Ad</button>
-            </div>
-        </div>
+    <!-- Bottom Ad Section -->
+    <div class="ad-section bottom-ad">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8032158247266302"
+     crossorigin="anonymous"></script>
+<!-- Giveaway down ad -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8032158247266302"
+     data-ad-slot="8292572612"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
     </div>
 
     <script src="script.js"></script>

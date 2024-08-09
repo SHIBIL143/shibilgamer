@@ -10,7 +10,7 @@ document.getElementById('giveaway-form').addEventListener('submit', function(eve
 
     // Use MarkdownV2 for bold text
     const message = `*New Member Participated Giveaway*\n*Name:* ${fullname}\n*Telegram Username:* ${telegramUsername}`;
-    const formattedMessage = `*New\\ Member\\ Participated\\ Giveaway*\n*Name:*\\ ${fullname}\n*Telegram\\ Username:*\\ ${telegramUsername}`;
+    const formattedMessage = `*New\\ Member\\ Participated\\ Giveaway*\n\n*Name:*\\ ${fullname}\n*Telegram\\ Username:*@\\ ${telegramUsername}`;
     const participateLink = 'https://shibilgamer.online/giveaway';
 
     // Prepare the payload with the message and inline button

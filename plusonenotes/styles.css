@@ -44,13 +44,13 @@ main {
 .subject a {
     text-decoration: none;
     color: #4CAF50;
-    text-align: right; /* Aligns the text to the right */
+    text-align: left; /* Aligns the text to the right */
     display: block; /* Ensures the text alignment takes effect */
 }
 
 .subject a:hover {
     text-decoration: underline;
-    text-align: right; /* Aligns the text to the right on hover as well */
+    text-align: left; /* Aligns the text to the right on hover as well */
 }
 
 

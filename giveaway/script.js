@@ -8,7 +8,7 @@ document.getElementById('giveaway-form').addEventListener('submit', function(eve
     const botToken = '6730696754:AAFj8glN-U2dMMeZ80BONllbgNumfK8_qeg';
     const channelId = '@SG_BROADCAST';  // Use '@' before your channel ID
 
-    const message = `*New Member Participated Giveaway*\n\n*Name:* ${fullname}\n*Telegram Username:* ${telegramUsername}`;
+    const message = `*New Member Participated Giveaway*\n\n*Name:* ${fullname}\n*Telegram Username:*@ ${telegramUsername}`;
     const participateLink = 'https://shibilgamer.online/giveaway';
 
     // Prepare the payload with the message and inline button

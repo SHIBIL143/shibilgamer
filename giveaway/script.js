@@ -32,10 +32,11 @@ document.getElementById('giveaway-form').addEventListener('submit', function(eve
     })
     .then(response => response.json())
     .then(data => {
+        console.log(data);  // Print the API response to debug
         if (data.ok) {
             alert('Submission successful!');
         } else {
-            alert('Error occurred, please try again.');
+            alert(`Error occurred: ${data.description}`);
         }
     })
     .catch(error => {

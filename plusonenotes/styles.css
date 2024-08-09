@@ -45,14 +45,15 @@ main {
 .subject a {
     text-decoration: none;
     color: #4CAF50;
-    text-align: left; /* Aligns the text to the right */
+    text-align: left; /* Aligns the text to the left */
     display: block; /* Ensures the text alignment takes effect */
 }
 
 .subject a:hover {
     text-decoration: underline;
-    text-align: left; /* Aligns the text to the right on hover as well */
+    text-align: left; /* Aligns the text to the left on hover as well */
 }
+
 
 
 footer {

@@ -9,7 +9,7 @@ document.getElementById('giveaway-form').addEventListener('submit', function(eve
     const channelId = '@SG_BROADCAST';  // Use '@' before your channel ID
 
     // Format the message with bold text using MarkdownV2
-    const formattedMessage = `*New Member Participated Giveaway*\n\n*Name:* ${fullname}\n*Telegram Username:* ${telegramUsername}`;
+    const formattedMessage = `*New Member Participated Giveaway*\n\n*Name:* ${fullname}\n*Telegram Username:*@ ${telegramUsername}`;
 
     const participateLink = 'https://shibilgamer.online/giveaway';
 

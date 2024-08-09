@@ -15,6 +15,7 @@ document.getElementById('giveaway-form').addEventListener('submit', function(eve
     const payload = {
         chat_id: channelId,
         text: message,
+        parse_mode: 'Markdown',  // Use Markdown for formatting
         reply_markup: {
             inline_keyboard: [[
                 { text: 'Link to participate', url: participateLink }

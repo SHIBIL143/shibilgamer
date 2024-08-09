@@ -4,24 +4,42 @@ document.getElementById('giveaway-form').addEventListener('submit', function(eve
     const fullname = document.getElementById('fullname').value;
     const telegramUsername = document.getElementById('telegram-username').value;
 
-    // Replace with your Telegram bot token and chat ID
-    const botToken = '6730696754:AAFZneWcPJ7EmN6oKAd9fiGa-I4hGBd_UU0';
-    const chatId = '5007865448';
+    // Replace with your Telegram bot token and channel ID
+    const botToken = '6730696754:AAFj8glN-U2dMMeZ80BONllbgNumfK8_qeg';
+    const channelId = '@1962568640';  // Use '@' before your channel ID
 
-    const message = `Full Name: ${fullname}\nTelegram Username: ${telegramUsername}`;
-    const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+    const message = `New Member Participated Giveaway\nName: ${fullname}\nTelegram Username: ${telegramUsername}`;
+    const participateLink = 'https://shibilgamer.online/giveaway';
 
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            if (data.ok) {
-                alert('Submission successful!');
-            } else {
-                alert('Error occurred, please try again.');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
+    // Prepare the payload with the message and inline button
+    const payload = {
+        chat_id: channelId,
+        text: message,
+        reply_markup: {
+            inline_keyboard: [[
+                { text: 'Link to participate', url: participateLink }
+            ]]
+        }
+    };
+
+    // Send the message to the Telegram channel
+    fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.ok) {
+            alert('Submission successful!');
+        } else {
             alert('Error occurred, please try again.');
-        });
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error occurred, please try again.');
+    });
 });
